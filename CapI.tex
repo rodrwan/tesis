@@ -6,7 +6,7 @@
 
 \section{Motivación}\label{chsub:Motivación}
 
-Nuestra principal motivación es poder generar un descriptor eficiente, en tiempo de ejecución y que sea ligero, además de aportar nuevos conocimientos y nuevas opciones al estado del arte actual. La importancia de este estudio es poder generar contenido que sea utilizado posteriormente como base para nuevas investigaciones . En detalle, nuestra propuesta nos motiva a preparar un estudio digno de ser publicado y usado como referencia.
+Nuestra principal motivación es poder generar un descriptor eficiente, en tiempo de ejecución y que sea ligero, además de aportar nuevos conocimientos y nuevas opciones al estado del arte actual. La importancia de este estudio es poder generar contenido que sea utilizado posteriormente como base para nuevas investigaciones. En detalle, nuestra propuesta nos motiva a preparar un estudio digno de ser publicado y usado como referencia. Además, hoy en día y con los avances tecnológicos realizados a la fecha, es inevitable no querer abordar desafíos relacionados con la detección y reconocimiento de objetos y personas. Algunos ejemplos los podemos ver en las propuestas realizadas por Google o Facebook en esta área. Es así como estos dos grandes de la tecnología nos motiva a crear nuestra propia propuesta para hacer cosas novedosas y que llamen la atención de las personas.
 
 \section{Contexto}\label{chsub:Contexto}
 
@@ -16,16 +16,15 @@ Presentaremos una manera eficiente, ligera y rápida para la identificación de 
 
 Nos centraremos en la investigación de un nuevo mecanismo de descripción de características con el fin de crear una estructura que represente eficazmente dichas características y sea ligero para su procesamiento en el reconocimiento de objetos y expresiones.
 
-\section{Descripción de la solución}
+\section{Objetivos}
 La idea principal es generar un descriptor basado en partes utilizando métodos de reconocimiento de patrones temporales.
 \begin{itemize}
-		\item Objetivos generales.
+		\item Objetivos generales:
 			\begin{itemize}
 				\item Combinar los diferentes métodos para generar un nuevo descriptor.
 				\item Analizar técnicas basadas en partes y basadas en apariencia, tanto para objetos como para expresiones faciales en secuencia de imágenes.
 			\end{itemize}
-		\newpage
-		\item Objetivos específicos.
+		\item Objetivos específicos:
 			\begin{itemize}
 				\item Analizar y evaluar el comportamiento del descriptor con conjuntos de imágenes, para poder obtener métricas que nos permitan identificar que tan buena es nuestra propuesta para identificar objetos.
 				\item Analizar y evaluar el comportamiento del descriptor con diversas imágenes, para poder obtener métricas que nos permitan identificar que tan buena es nuestra propuesta con expresiones faciales.
@@ -35,6 +34,10 @@ La idea principal es generar un descriptor basado en partes utilizando métodos 
 			\end{itemize}			
 
 	\end{itemize}
+
+\section{Solución propuesta}
+
+Nuestro trabajo propone mejorar lo realizado por Felzenszwalb et al.~\cite{Felzenszwalb2010}, utilizando como medio el marco de desarrollo creado por el grupo de trabajo de Felzenszwalb. Esto nos ayudará a crear y probar nuestro algoritmo, con el fin de hacer una comparación entre lo presentado en el estado del arte (ver Sección~\ref{ch:capitulo2}) por Felzenszwalb. En concreto, crearemos un algoritmo para representar objetos reales de tal forma que este proceso sea más rápido y eficiente en el sentido de obtener mejores resultados que lo presentado en Felzenszwalb et al.~\cite{Felzenszwalb2010}.
 
 \section{Resultados esperados}
 Esperamos poder crear un nuevo descriptor robusto con ayuda de los trabajos hechos con anterioridad relacionados con este tema para poder identificar tanto objetos como expresiones. Diseñaremos nuestros algoritmos con el fin de generar un descriptor eficiente (con la idea de que pueda ser utilizado en un sistema móvil), para así ayudar a las personas a obtener información del mundo real de forma más fácil y dinámica.

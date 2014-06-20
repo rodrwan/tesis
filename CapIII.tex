@@ -1,37 +1,12 @@
-\chapter[Modelos para detección de objetos basados en partes discriminadamente entrenados ]{Modelos para detección de objetos basados en partes discriminadamente entrenados }\label{ch:capitulo3}
+\chapter[Definiciones ]{Definiciones }\label{ch:capitulo3}
+En este capítulo se presentan diversos términos fundamentales que se utilizaran en capítulos posteriores.
 
-\section{Preprocesamiento}
-\label{sec:bdd}
+\subsection{Histogram of Gradient}
+\label{subsec:hog}
 
-El preprocesamiento es una etapa muy importante en este tipo de estudios, ya que es en esta etapa donde se seleccionan los datos a ser procesados, utilizando diversas especificaciones y formas de representar estos datos de entrada. Para el estudio realizado por Ramanan et al.~\cite{Felzenszwalb2010}, se utiliza la base de datos PASCAL~\cite{Everingham2010}, la cual provee un conjunto de imágenes y anotaciones, más adelante explicado.
 
-Para realizar el procesamiento del conjunto de datos se utiliza un framework creado por Ramanan et al.~\cite{Felzenszwalb2010}, el cual nos permitirá generar los modelos para el reconocimiento de los objetos que analizaremos. Como este framework está basado en el conjunto de imágenes de PASCAL~\cite{Everingham2010}, se necesita detallar información específica de cada imagen, por lo que es necesario crear un archivo XML, con el mismo nombre de la imagen, que contenga la información necesaria para realizar el procesamiento, esto es llamado, anotación.
+\subsection{Filtros lineales}
+\label{subsec:fl}
 
-La anotación, específica, la clase de la muestra; la ruta del archivo; de dónde se obtuvo la imagen; entre otros atributos necesarios para identificar las imágenes de entrenamiento. Pero lo más importante es que tiene la o las \textbf{regiones} de interés, dependiendo de cuántos objetos contenga la muestra.
-Una región, está representada por cuatro pixeles, los que a su vez, representan los vértices de una diagonal en un plano cartesiano, dónde su origen se encuentra ubicado en la esquina superior izquierda de la imagen. Es importante mencionar, que tanto el eje \textit{x} como el eje \textit{y}, son positivos, por lo que cada pixel representa la distancia al origen.
-
-Una vez creadas todas las anotaciones, se puede iniciar el proceso de creación del modelo. En primera instancia, se separan los conjuntos de datos en tres partes: Datos positivos, es decir, aquellos donde se encuentra el objeto; Datos negativos, aquellas imágenes donde no hay presencia de la clase buscada y finalmente en datos negativos difíciles, el que contiene imágenes donde hay objetos muy parecidos a simple vista. La estructura del modelo será analizada con mayor detalle en la sección~\ref{sec:model}.
-
-La cantidad de muestras ó tipos de imágenes, pueden variar influyendo directamente en el resultado, afectando la efectividad que se haya obtenido en el paso anterior, por lo que es muy importante encontrar y preprocesar un buen conjunto de entrenamiento en una etapa temprana.
-
-\section{Modelo de entrenamiento}
-\label{sec:model}
-Nuestro modelo estará basado por lo presentado en el estado del arte, específicamente, lo realizado por Ramanan et al.~\cite{Felzenszwalb2010}. Esto nos permitirá crear un modelo el cual nos ayudará a clasificar de mejor manera las clases que en este trabajo estamos buscando clasificar. A continuación detallaremos la estructura del framework, tratando de explicar y analizar los puntos más importantes de éste.
-
-Según explica Ramanan et al.~\cite{Felzenszwalb2010}, todos los modelos generados por el framework involucran filtros lineales, los cuales son aplicados en mapas de características densos. De estos mapas se extraen las características más representativas y se crea un vector de características que describe la porción de la imagen que se está observando. A demás, estas características son descritas mediante una variación de HOG descrita por Dalal and Triggs~\cite{Dalal2005}, aun así el framework es independiente del tipo de extractor de características que se utilice.
-
-Los filtros son definidos por un arreglo de \textit{d} dimensiones de vectores de peso. Ramanan et al.~\cite{Felzenszwalb2010}, define los \textit{scores} en distintas posiciones y escalas de la imagen observada, esto se realiza obteniendo las características de la pirámide, esta pirámide, consiste en hacer varias corridas de la misma imagen con distintas resoluciones, donde en cada nivel de resolución se extraen las características más representativas. En la práctica, los niveles de la pirámide son definidos por $\lambda$. Se usa $\lambda = 5$ para entrenar y $\lambda = 10$ para probar el modelo.
-
-\subsection{Deformable Part Models}
-\label{subsec:dpm}
-Este modelo está definido por un filtro raíz que aproximadamente cubre un objeto completo y por filtros de alta resolución que cubren partes más pequeñas del objeto. El filtro raíz define la ventana principal para la detección. Los filtros por cada parte del objeto son ubicados $\lambda$ niveles abajo en la pirámide. Las característica en ese nivel son procesados al doble de resolución de las características sobre el filtro de la raíz.
-Con estos pasos, Ramanan et al.~\cite{Felzenszwalb2010}~\cite{Felzenszwalb2013}, a encontrado que usando funciones de mayor resolución para definir filtros de partes, es fundamental para obtener un rendimiento más mayor en la tarea de reconocimiento.
-
-\subsection{Matching}
-\label{subsec:matching}
-Para detectar un objeto en una imagen, se calcula un score general sobre la raíz de la imagen de acuerdo al mejor posicionamiento de las partes, $$ score(p_{0}) = \max_{p_{1}, ..., p_{n}} score(p_{0}, ..., p_{n}). $$ Una detección es definida por un alto score de las posiciones de la raíz, mientras que las posiciones de las partes con alto score definen la hipótesis de un objeto completo.
-
-Mediante la definición de una score global para cada posición de la raíz se puede detectar varias instancias de un objeto.
-
-\subsection{Mixture Models}
-\label{subsec:mm}
+\subsection{Score}
+\label{subsec:score}

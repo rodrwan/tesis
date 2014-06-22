@@ -10,4 +10,9 @@
 *.toc
 *.sty
 *.cls
+<<<<<<< HEAD
 thesis_rfuenzalidac1.tex
+=======
+thesis_rfuenzalidac1.tex
+.DS_Store
+>>>>>>> 3bab0826051589fef1f771e88493714c764b5522

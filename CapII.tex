@@ -14,11 +14,18 @@ En otras áreas de la detección y el reconocimiento, el reconocimiento de carac
 \label{subsec:modelo}
 Un modelo es una abstracción teórica del mundo real, que nos permite representar la información de forma simplificada con el objetivo de realizar predicciones con los datos necesarios. Estos modelos permiten encontrar \textit{igualdades o similitudes} en los datos. Más en concreto, se suele entrenar un modelo con un conjunto de datos que representan una clase, para luego usar esta representación para predecir nuevos datos de entrada. En cuanto a la detección y reconocimiento de objetos, se utilizan modelos llamados descriptores, los cuales son algoritmos que extraen características más representativas de una imagen. 
 
-\begin{definition}[Modelos estadísticos]
-Estos modelos permiten representar situaciones cotidianas en forma matemática, lo que nos permite tener una abstracción más exacta de sucesos cotidianos.
+\begin{definition}[Modelos estadísticos]\label{def:mod_est}
+Un modelo estadístico es una ecuación matemática que reproduce los fenómenos que observamos de la forma más exacta posible. Para ello tiene en cuenta los datos suministrados y la influencia que el azar tiene en estas observaciones. Esto nos permite tener una abstracción más exacta de sucesos cotidianos.
 \end{definition}
  
-\begin{definition}[Descriptor]
+\begin{definition}[Descriptor]\label{def:desc}
+Los descriptores son el primer paso para poder encontrar la conexión entre los píxeles contenidos en una imagen digital y aquello que los humanos recordamos después de haber observado durante unos minutos una imagen o un conjunto de las mismas.
+
+Los descriptores visuales se dividen en dos grandes grupos:
+\begin{itemize}
+\item Descriptores de información general: contienen descriptores de bajo nivel, proporcionando una descripción a cerca del color, formas y regiones, texturas y movimiento.
+\item Descriptores de información de dominio específico: proporcionan información acerca de los objetos y eventos que van apareciendo en la escena. Un ejemplo muy concreto seria el de reconocimiento facial.
+\end{itemize}
 
 \end{definition}
 
@@ -34,7 +41,7 @@ En Bernstein~\cite{statistical2005}, se propone un modelo denso y con un rendimi
 
 Bay et al.~\cite{surf2008} presenta un detector y descriptor que es invariante a las rotaciones, llamado \textit{Speeded-Up Robust Feature (SURF)}. SURF utiliza un descriptor basado en distribuciones. Para SURF la creación de un descriptor debe ser único e invariante al ruido, para esto cada descriptor describe una distribución de intensidad de los puntos adyacentes al punto de interés, similar a lo que se postula en Lowe~\cite{sift2004}, pero con la diferencia que no se utiliza el gradiente sino que una distribución de primer orden basado en los wavelet the Haar.
 
-Felzenszwalb et al.~\cite{Felzenszwalb2010} presenta un modelo basado en partes,  el cual utiliza varias partes de la imagen con el fin de determinar si existe un objeto de interés en ella. En este trabajo se busca optimizar \textit{Dalal-Triggs detector} el que utiliza \textit{Histogram of Oriented Gradients (HOG)}~\cite{hog2005} (ver Sección~\ref{subsec:hog}). Este tiene como principal objetivo obtener características específicas del objeto mediante la dirección de los gradientes o bordes, esto es implementado de la siguiente forma: Se divide la imagen en pequeñas porciones, llamadas celdas, las cuales generan otros histogramas de gradientes o bordes por cada pixel dentro de esta celda, combinando estos se obtiene la representación del descriptor. La mejora realizada sobre este método es que en paralelo se computa una función que maximiza los puntos obtenidos por HOG, lo cual permite capturar más características en el mismo rango de muestreo, este estudio será analizado con mayor detalle en el Capítulo~\ref{ch:framework}.
+Felzenszwalb et al.~\cite{Felzenszwalb2010} presenta un modelo basado en partes,  el cual utiliza varias partes de la imagen con el fin de determinar si existe un objeto de interés en ella. En este trabajo se busca optimizar \textit{Dalal-Triggs detector} el que utiliza \textit{Histogram of Oriented Gradients (HOG)}~\cite{hog2005} (ver Sección~\ref{subsec:hog}). Este tiene como principal objetivo obtener características específicas del objeto mediante la dirección de los gradientes o bordes, esto es implementado de la siguiente forma: Se divide la imagen en pequeñas porciones, llamadas celdas, las cuales generan otros histogramas de gradientes o bordes por cada pixel dentro de esta celda, combinando estos se obtiene la representación del descriptor. La mejora realizada sobre este método es que en paralelo se computa una función que maximiza los puntos obtenidos por HOG, lo cual permite capturar más características en el mismo rango de muestreo, este estudio será analizado con mayor detalle en el Capítulo~\ref{ch:capitulo4}.
 
 Choi et al.~\cite{treebased2012}, se propone un modelo basado en el contexto el cual maneja distintas combinaciones o locaciones de objetos que guía un detector el cual produce una interpretación semántica de la imagen que se está analizando. El objetivo de este trabajo es poder detectar múltiples categorías de objetos dentro de una misma escena. Por lo cual su modelo utiliza características globales dependientes entre las categorías de los objetos y las salidas locales de los descriptores utilizados.
 

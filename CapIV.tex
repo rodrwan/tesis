@@ -17,9 +17,9 @@ Se necesita detallar información específica de cada imagen, por lo que es nece
 \end{figure}
 
 \subsection{Preprocesamiento}\label{subsec:pre}
-Una vez creadas todas las anotaciones, se puede iniciar el proceso de creación del modelo. En primera instancia, se separan los conjuntos de datos en tres partes: Datos positivos, es decir, aquellos donde se encuentra el objeto; Datos negativos, aquellas imágenes donde no hay presencia de la clase buscada y finalmente en datos negativos difíciles, el que contiene imágenes donde hay objetos muy parecidos a simple vista. La estructura del modelo será analizada con mayor detalle en la sección~\ref{sec:model}.
+Una vez creadas todas las anotaciones, se puede iniciar el proceso de creación del modelo. En primera instancia, se separan los conjuntos de datos en tres partes: Datos positivos, es decir, aquellos donde se encuentra el objeto; Datos negativos, aquellas imágenes donde no hay presencia de la clase buscada y finalmente en datos negativos difíciles, el que contiene imágenes donde hay objetos muy parecidos a simple vista al objeto que estamos buscando clasificar. La estructura del modelo será analizada con mayor detalle en la sección~\ref{sec:model}.
 
-La cantidad de muestras ó tipos de imágenes, pueden variar influyendo directamente en el resultado, afectando la efectividad que se haya obtenido en el paso anterior, por lo que es muy importante encontrar y preprocesar un buen conjunto de entrenamiento en una etapa temprana.
+La cantidad de muestras ó tipos de imágenes pueden variar influyendo directamente en el resultado, afectando así la efectividad que se haya obtenido en el paso anterior, por lo que es muy importante encontrar y preprocesar un buen conjunto de entrenamiento en una etapa temprana.
 
 \section{Modelo de entrenamiento}\label{sec:model}
 Nuestro modelo estará basado por lo presentado en el estado del arte, específicamente, lo realizado por Felzenszwalb et al.~\cite{Felzenszwalb2010}. Esto nos permitirá crear un modelo el cual nos ayudará a clasificar de mejor manera las clases que en este trabajo estamos buscando clasificar. A continuación detallaremos la estructura del marco de desarrollo tratando de explicar y analizar los puntos más importantes de éste.

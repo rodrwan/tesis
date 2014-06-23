@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 ARGUMENT="$1"
 #determine aux name by stripping .tex suffix and adding .aux
 AUXNAME="${ARGUMENT%.tex}.aux"

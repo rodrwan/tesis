@@ -26,9 +26,7 @@ HOG cuenta con ciertos pasos que se deben realizar para obtener el descriptor de
 
 \subsection{Procedimiento de HOG}
 Felzenszwalb et al.~\cite{Felzenszwalb2010}, dividen la imagen en celdas (ver Definición~\ref{def:cel}), sin superposición. Luego, por cada pixel dentro de una celda se acumulan los histogramas de orientación de gradientes. Estos histogramas capturan propiedades de forma local dentro de la celda. a su vez, estos histogramas son invariantes a pequeñas deformaciones.
-El gradiente en cada pixel está discretizado en uno de los nueve contenedores(\textit{bins}) de orientación, y cada pixel vota por la orientación de su gradiente, con un valor que depende de la magnitud del gradiente. Para las imágenes en color, se calcula el gradiente de cada canal de color, eligiendo el canal con la mayor cantidad de pixeles donde la magnitud del gradiente esa mayor.
-
-En la Figura~\ref{fig:blocks_cells} se puede apreciar la división de los bloques y las celdas antes descritas.
+El gradiente en cada pixel está discretizado en uno de los nueve contenedores(\textit{bins}) de orientación, y cada pixel vota por la orientación de su gradiente, con un valor que depende de la magnitud del gradiente. Para las imágenes en color, se calcula el gradiente de cada canal de color, eligiendo el canal con la mayor cantidad de pixeles donde la magnitud del gradiente esa mayor. En la Figura~\ref{fig:blocks_cells} se puede apreciar la división de los bloques y las celdas antes descritas.
 
 \begin{figure}[tb]
   \centering
@@ -51,9 +49,35 @@ La pirámide, consiste en hacer varias iteraciones de una misma imagen con disti
 \section{Filtro y score}\label{sec:fas}
 
 Un filtro está definido por una matriz de $w$(ancho) por $h$(alto) la cual define un vector de peso de d-dimensiones. El \textit{score} de un filtro está definido por el producto punto entre su vector de pesos y las característica en la sub-ventana de la pirámide de HOG de dimensión $w$x$h$.
-\section{Latent SVM}\label{sec:lsvm}
+\section{SVM}\label{sec:lsvm}
 
-Falta solo esto :(
+\textit{Support Vector Machines (SVM)}~\cite{Vapnik1995}~\cite{Duda2000}~\cite{Cortes1995} es un tipo de algoritmo de aprendizaje supervisado que analiza información y reconoce patrones, utilizado para tareas de clasificación. Dato un conjunto de entrenamiento previamente etiquetado, por ejemplo en dos clases. SVM construye un modelo el cual es capas de asignar una nueva muestra a una de las categorías previamente definidas, por lo que se define un clasificador binario lineal no-probabilístico.
+SVM define un modelo como una representación de puntos en un espacio dado, representados de tal forma que son separados por una diferencia que permite clasificar sin problema dos clases, por lo tanto los nuevos datos que entren al modelos serán clasificados en una de las dos opciones de clasificación.
+
+Además de realizar la clasificación lineal SVMs puede realizar de manera eficiente una clasificación no lineal utilizando lo que se llama el truco del kernel, la cartografía de forma implícita sus entradas a los espacios de funciones de alta dimensión.
+
+\subsection{Ventajas de SVM}
+\begin{itemize}
+\item Eficiente en espacios de dimensiones altos.
+\item Sigue siendo eficaz en los casos en que el número de dimensiones es mayor que el número de muestras.
+\item Utiliza un subconjunto de puntos de entrenamiento en la función de decisión (llamada vectores de soporte), por lo que también es eficiente en el uso de memoria.
+\item Versátil: diferentes funciones del kernel pueden ser especificados para la función de decisión. Kernel comunes se proporcionan, pero también es posible especificar \textit{kernels} personalizados.
+\end{itemize}
+
+\subsection{Desventajas de SVM}
+\begin{itemize}
+\item Si el número de características es mucho mayor que el número de muestras, el método probablemente entregue malos resultados.
+\item SVMs no proporcionan directamente las estimaciones de probabilidad.
+\end{itemize}
+
+\subsection{Aplicaciones}
+\begin{itemize}
+\item SVMs es útil en categorización de texto esta aplicación puede reducir significantemente la necesidad de etiquetar instancias del conjunto de entrenamiento.
+\item Clasificación de imágenes. 
+\item SVMs es útil en la ciencia médica para clasificar las proteínas con hasta un 90\% de los compuestos clasificados correctamente.
+\item Reconocimiento de caracteres escritos a mano
+\end{itemize}
+
 \section{Resumen}\label{sec:resumen}
 
 Cada uno de los conceptos revisados en este capítulo son de vital importancia para los capítulos posteriores, ya que son estos conceptos los que definirán parte de lo que presentaremos en las siguientes secciones. Esto forma las bases teóricas las cuales darán forma a nuestra propuesta.

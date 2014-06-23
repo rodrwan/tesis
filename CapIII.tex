@@ -48,7 +48,9 @@ La pirámide, consiste en hacer varias iteraciones de una misma imagen con disti
 
 \section{Filtro y score}\label{sec:fas}
 
-Un filtro está definido por una matriz de $w$(ancho) por $h$(alto) la cual define un vector de peso de d-dimensiones. El \textit{score} de un filtro está definido por el producto punto entre su vector de pesos y las característica en la sub-ventana de la pirámide de HOG de dimensión $w$x$h$.
+Un filtro está definido por una matriz de $w$(ancho) por $h$(alto) la cual define un vector de peso de d-dimensiones. Estos filtros especifican las características extraídas por HOG, en los niveles de la pirámide.
+
+El \textit{score} de un filtro está definido por el producto punto entre su vector de pesos y las característica en la sub-ventana de la pirámide de HOG de dimensión $w$x$h$.
 \section{SVM}\label{sec:lsvm}
 
 \textit{Support Vector Machines (SVM)}~\cite{Vapnik1995}~\cite{Duda2000}~\cite{Cortes1995} es un tipo de algoritmo de aprendizaje supervisado que analiza información y reconoce patrones, utilizado para tareas de clasificación. Dato un conjunto de entrenamiento previamente etiquetado, por ejemplo en dos clases. SVM construye un modelo el cual es capas de asignar una nueva muestra a una de las categorías previamente definidas, por lo que se define un clasificador binario lineal no-probabilístico.

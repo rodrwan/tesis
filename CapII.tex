@@ -4,11 +4,13 @@ En el área del reconocimiento de patrones, visión por computadora es un área 
 
 % SECCION DE DETECCION 
 \section{Detección y reconocimiento}
-La detección de objetos es una tarea ardua que ha sido estudiada durante décadas, esto se puede ver en el estudio que resume 50 años de investigación relacionada con el reconocimiento de objetos~\cite{Andreopoulos2013}. El fin de detectar objetos, es lograr obtener una representación fiel del objeto que se quiere detectar, extrayendo así, por ejemplo, las características únicas que posteriormente serán utilizadas para su reconocimiento y clasificación.
+La detección de objetos es una tarea ardua que ha sido estudiada durante décadas, esto se puede ver en el estudio que resume 50 años de investigación relacionada con el reconocimiento de objetos~\cite{Andreopoulos2013} lo que nos da una gran visión de lo que se a realizado en esta área, este estudio nos entrega una mirada especialista y nos plantea ¿cuál es el fin de detectar objetos? Lo que nos llama mucho la atención, y si lo pensamos detenidamente, podemos plantear lo siguiente, detectando objetos en una imagen o en una secuencia de imágenes buscamos utilizar aquello que en dichas imágenes es único y las describa, así el color de ojos, la forma de hablar, o la forma de la cara de una persona la diferencia de otra, por ejemplo, eso nos da el punta pie inicial para describir lo que en esa imagen se está viendo, si bien el objetivo de detectar objetos es lograr obtener una representación fiel de éste, se busca encontrar una manera de representar o modelar las características únicas de una imagen con el fin de poder clasificarla para posteriormente ser utilizada para tomar decisiones que utilicen algún programa o aplicación.
 
 En cuanto al reconocimiento de objetos se han realizado estudios en dos contextos: objetos rígidos en 2D y 3D\@. El objetivo principal del \textit{reconocimiento de objetos}, es poder clasificar de forma correcta las clases que se están observando. A modo de ejemplo, en una escena donde hay siete perros y tres gatos, el objetivo del algoritmo que se utilice es que identifique, con el menor error posible, los siete perros que hay en una escena como perros, y de igual manera para los tres gatos.
 
-En otras áreas de aplicación de detección y reconocimiento podemos encontrar el reconocimiento de caracteres. Que en los últimos años ha sido campo de estudio fértil. Además, es un caso de estudio muy interesante dada la naturaleza de su información, ya que ésta es más acotada. 
+Para la detección y reconocimiento de rostros también existen investigaciones que proponen excelentes mecanismos para realizar estas tareas, algunas de estas propuestas se presentan en la Sección~\ref{subsec:expre}, ahora bien, detectar y reconocer rostros es una tarea más que estudiada, por lo que surgen preguntas como ¿qué pasa con los sentimientos que expresa un rostro?, ¿podrá ser capas un computador saber mi estado de animo solo viendo mi cara? este tema abre otro capítulo de discusión y también se presentan en este Capítulo estudios que comienzan a abarcar este tópico tan interesante, interesante para nuestro trabajo, ya que tocaremos este punto en nuestra propuesta y saber que se ha realizado en este tópico en particular es de gran ayuda.
+
+En otras áreas de la detección y reconocimiento, tenemos el reconocimiento óptico de caracteres el cual juega un rol fundamental en la tarea de digitalización de libros, ya que al generarse tanta información escrita y de distintas formas, poder crear un sistema que lo haga automáticamente detectando ciertos patrones en los datos utilizados, en este caso caracteres alfanuméricos. Esto implica un importante ahorro de recursos humanos y un aumento de la productividad, al mismo tiempo que se mantiene, o hasta se mejora, la calidad de muchos servicios.
 
 \subsection{Modelo}
 \label{subsec:modelo}
@@ -24,14 +26,7 @@ Un modelo estadístico es una ecuación matemática que reproduce los fenómenos
 \end{definition}
  
 \begin{definition}[Descriptor]\label{def:desc}
-Los descriptores son el primer paso para poder encontrar la conexión entre los píxeles contenidos en una imagen digital y aquello que los humanos recordamos después de haber observado durante unos minutos una imagen o un conjunto de las mismas.
-
-Los descriptores visuales se dividen en dos grandes grupos:
-\begin{itemize}
-\item Descriptores de información general: contienen descriptores de bajo nivel, proporcionando una descripción acerca del color, formas y regiones, texturas y movimiento.
-\item Descriptores de información de dominio específico: proporcionan información acerca de los objetos y eventos que van apareciendo en la escena. Un ejemplo muy concreto seria el de reconocimiento facial.
-\end{itemize}
-
+Un descriptor no es más que un conjunto de características. Es decir, un especie de modelo que representa las características extraídas en forma vectorial.
 \end{definition}
 
 
@@ -50,7 +45,7 @@ Felzenszwalb et al.~\cite{Felzenszwalb2010} presenta un modelo basado en partes,
 
 Choi et al.~\cite{treebased2012} proponen un modelo basado en el contexto, el cual maneja distintas combinaciones o locaciones de objetos que guía un detector el cual produce una interpretación semántica de la imagen que se está analizando. El objetivo de este trabajo es poder detectar múltiples categorías de objetos dentro de una misma escena. Por lo cual su modelo utiliza características globales dependientes entre las categorías de los objetos y las salidas locales de los descriptores utilizados.
 
-\subsection{Modelos de detección y reconocimiento de expresiones}
+\subsection{Modelos de detección y reconocimiento de expresiones}\label{subsec:expre}
 Comúnmente existen dos enfoques para la extracción de características en el rostro: Basados en características geométricas y basados en apariencia. El primer tipo de métodos utiliza relaciones entre distintas partes del rostro para crear los descriptores. Mientras que el último método utiliza filtros que crean características, generales o en una área del rostro en especifico, con el fin de extraer los cambios de apariencia en la imagen del rostro.
 
 Hsu et al.~\cite{Hsu2002} presentan un algoritmo de detección de rostros que trabaja con imágenes a color, tomando en cuenta distintas condiciones de luminosidad, así como fondos complejos. Ellos definen que los rostros humanos juegan un importante rol en las aplicaciones actuales. Dicho algoritmo funciona de la siguiente manera. Primero, el algoritmo detecta las regiones donde está presente la piel, y luego genera un rostro candidato basado en la disposición espacial de estos parches cutáneos. Finalmente, el algoritmo construye los ojos, boca y el mapa de los contornos, para verificar cada rostro candidato.

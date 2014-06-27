@@ -14,7 +14,7 @@ Un bloque es una región de la imagen que corresponde a $2 \times 2$ celdas.
 
 \begin{definition}[Bins]
 \label{def:bin}
-Un histograma esta compuesto por bins. Un bin es la representación de la cuantificación de un espacio. Generalmente, en el bin se cuenta la cantidad de elementos del espacio que existen en la región definida por dicho bin. 
+Un histograma está compuesto por bins. Un bin es la representación de la cuantificación de un espacio. Generalmente, en el bin se cuenta la cantidad de elementos del espacio que existen en la región definida por dicho bin.
 \end{definition}
 
 \section{Histogram of Oriented Gradients}\label{subsec:hog}
@@ -23,21 +23,21 @@ Un histograma esta compuesto por bins. Un bin es la representación de la cuanti
 HOG cuenta con ciertos pasos que se deben realizar para obtener el descriptor de una imagen, esto se puede ver en la Figura~\ref{fig:hog_procedure}, y a continuación detallamos las etapas que componen el algoritmo HOG.
 
 \begin{figure}[tb]
-  \centering
-   \includegraphics[width=0.8\textwidth]{Figuras/hog-procedure.png}
-   \caption[Procedimiento de cálculo de HOG]{Procedimiento de cálculo de HOG.}
-   \label{fig:hog_procedure}
+ \centering
+  \includegraphics[width=0.8\textwidth]{Figuras/hog-procedure.png}
+  \caption[Procedimiento de cálculo de HOG]{Procedimiento de cálculo de HOG.}
+  \label{fig:hog_procedure}
 \end{figure}
 
 \subsection{Procedimiento de HOG}
 Felzenszwalb et al.~\cite{Felzenszwalb2010} dividen la imagen en celdas (ver Definición~\ref{def:cel}), sin superposición (en la Figura~\ref{fig:blocks_cells} se puede apreciar la división de los bloques y las celdas antes descritas). Luego, por cada píxel dentro de una celda se acumulan los histogramas de orientación de gradientes. Estos histogramas capturan propiedades de forma local dentro de la celda. a su vez, estos histogramas son invariantes a pequeñas deformaciones.
-El gradiente en cada píxel está discretizado en uno de los nueve contenedores (\textit{bins}) de orientación, y cada píxel vota por la orientación de su gradiente, con un valor que depende de la magnitud del gradiente. Para las imágenes en color, se calcula el gradiente de cada canal de color, eligiendo el canal con la mayor cantidad de píxeles donde la magnitud del gradiente esa mayor. 
+El gradiente en cada píxel está discretizado en uno de los nueve contenedores (\textit{bins}) de orientación, y cada píxel vota por la orientación de su gradiente, con un valor que depende de la magnitud del gradiente. Para las imágenes en color, se calcula el gradiente de cada canal de color, eligiendo el canal con la mayor cantidad de píxeles donde la magnitud del gradiente esa mayor.
 
 \begin{figure}[tb]
-  \centering
-   \includegraphics[width=0.5\textwidth]{Figuras/lena-grid.png}
-   \caption[Bloques y celdas]{Bloque 1 (azul), bloque 2 (rojo), celdas (verde).}
-   \label{fig:blocks_cells}
+ \centering
+  \includegraphics[width=0.5\textwidth]{Figuras/lena-grid.png}
+  \caption[Bloques y celdas]{Bloque 1 (azul), bloque 2 (rojo), celdas (verde).}
+  \label{fig:blocks_cells}
 \end{figure}
 
 Finalmente, cada histograma de las celdas es normalizado con respecto a la energía del gradiente en un vecindario alrededor de la celda. Se observan los cuatro bloques de $2 \times 2$ de celdas que contienen una celda particular, y luego se normaliza el histograma cada celda dada con respecto a la energía total en cada uno de estos bloques. Esto entrega un vector de longitud $9 \times 4$ que representa la información local de gradiente dentro de una célula.
@@ -46,10 +46,10 @@ Finalmente, cada histograma de las celdas es normalizado con respecto a la energ
 La pirámide consiste en hacer varias iteraciones de una misma imagen con distintas resoluciones, donde en cada nivel de resolución se extraen las características más representativas con el descriptor de HOG\@. La Figura~\ref{fig:hog_pyra}, muestra los histogramas obtenidos luego de pasar una imagen por tres niveles de la pirámide, estos niveles son representados por $\lambda$ y en la fase de entrenamiento tienen un valor de 5, es decir, cinco niveles de profundidad~\cite{Felzenszwalb2010}.
 
 \begin{figure}[tb]
-  \centering
-   \includegraphics[width=1\textwidth]{Figuras/phog.jpg}
-   \caption[Pirámide de HOG]{Pirámide de HOG~\cite{pyra}}
-   \label{fig:hog_pyra}
+ \centering
+  \includegraphics[width=1\textwidth]{Figuras/phog.jpg}
+  \caption[Pirámide de HOG]{Pirámide de HOG~\cite{pyra}}
+  \label{fig:hog_pyra}
 \end{figure}
 
 \section{Filtro y \textit{score}}\label{sec:fas}
@@ -60,7 +60,7 @@ El \textit{score} de un filtro está definido por el producto punto entre su vec
 \section{SVM}\label{sec:lsvm}
 
 \textit{Support Vector Machines} (\textit{SVM})~\cite{Vapnik1995, Duda2000, Cortes1995} es un tipo de algoritmo de aprendizaje supervisado que analiza información y reconoce patrones, utilizado para tareas de clasificación. Dado un conjunto de entrenamiento previamente etiquetado, por ejemplo en dos clases, SVM construye un modelo el cual es capaz de asignar una nueva muestra a una de las categorías previamente definidas, por lo que se define un clasificador binario lineal no-probabilístico.
-SVM define un modelo como un conjunto de puntos en un espacio dado que representan un hiper-plano en dicho espacio. Este hiper-plano separa las clases con la mayor diferencia posible para clasificar sin problema dichas clases. Los nuevos datos que entren al modelo serán clasificados en una de las dos opciones de según el lado donde se encuentran respecto al hiper-plano.
+SVM define un modelo como un conjunto de puntos en un espacio dado que representan un hiperplano en dicho espacio. Este hiperplano separa las clases con la mayor diferencia posible para clasificar sin problema dichas clases. Los nuevos datos que entren al modelo serán clasificados en una de las dos opciones de según el lado donde se encuentran respecto al hiperplano.
 
 Además de realizar la clasificación lineal, SVM puede realizar de manera eficiente una clasificación no lineal utilizando el truco del \textit{kernel}, ver Sección~\ref{subsec:kernel_methods}.% la cartografía de forma implícita sus entradas a los espacios de funciones de alta dimensión. what?!
 
@@ -80,19 +80,19 @@ Además de realizar la clasificación lineal, SVM puede realizar de manera efici
 
 \subsection{Aplicaciones}
 \begin{itemize}
-\item SVMs es útil en categorización de texto esta aplicación puede reducir significantemente la necesidad de etiquetar instancias del conjunto de entrenamiento.
-\item Clasificación de imágenes. 
+\item SVM es útil en categorización de texto, esta aplicación puede reducir significativamente la necesidad de etiquetar instancias del conjunto de entrenamiento.
+\item Clasificación de imágenes.
 \item SVMs es útil en la ciencia médica para clasificar las proteínas con hasta un 90\% de los compuestos clasificados correctamente.
 \item Reconocimiento de caracteres escritos a mano
 \end{itemize}
 
 \subsection{Kernel Methods}\label{subsec:kernel_methods}
 
-Los métodos de \textit{Kernel} son un tipo de algoritmos utilizados en análisis y reconocimiento de patrones, los cuales son conocidos por ser utilizados en SVM~\cite{kernels}. La principal característica de estos métodos son sus diversos enfoques. Estos métodos representan la información en espacios de dimensiones mayores con el fin de poder separar las muestras, para así poder distinguirlas de manera más fácil. No existe una restricción para las dimensiones, pudiendo ser estas infinitas. Esta función de representación no necesita mayor complejidad de calculo ya que existe una herramienta llamada, \textit{The} \textit{Kernel} \textit{Trick} la que simplifica esta tarea.
+Los métodos de \textit{Kernel} son un tipo de algoritmos utilizados en análisis y reconocimiento de patrones, los cuales son conocidos por ser utilizados en SVM~\cite{kernels}. La principal característica de estos métodos son sus diversos enfoques. Estos métodos representan la información en espacios de dimensiones mayores con el fin de poder separar las muestras, para así poder distinguirlas de manera más fácil. No existe una restricción para las dimensiones, pudiendo ser estas infinitas. Esta función de representación no necesita mayor complejidad de cálculo ya que existe una herramienta llamada, \textit{The} \textit{Kernel} \textit{Trick} la que simplifica esta tarea.
 
 \subsection{The Kernel Trick}
 
-\textit{The} \textit{kernel} \textit{trick} es una herramienta matemática que puede ser utilizada sobre algoritmos que únicamente utilicen el producto punto entre dos vectores. Donde sea que se utilice el producto punto de vectores se puede reemplazar por una función \textit{kernel}. Cuando la función \textit{kernel} es bien utilizada, permite que un algoritmo lineal pase a ser no-lineal, lo que logra cambiar el espacio de representación de los datos. Dependiendo del algoritmo esto puede representar un mayor esfuerzo tanto en el computo, como en su implementación. Los algoritmos no-lineales son equivalentes a su operador lineal original en el espacio de características $\varphi$.
+\textit{The} \textit{kernel} \textit{trick} es una herramienta matemática que puede ser utilizada sobre algoritmos que únicamente utilicen el producto punto entre dos vectores. Donde sea que se utilice el producto punto de vectores se puede reemplazar por una función \textit{kernel}. Cuando la función \textit{kernel} es bien utilizada, permite que un algoritmo lineal pase a ser no-lineal, lo que logra cambiar el espacio de representación de los datos. Dependiendo del algoritmo esto puede representar un mayor esfuerzo tanto en el cómputo, como en su implementación. Los algoritmos no-lineales son equivalentes a su operador lineal original en el espacio de características $\varphi$.
 
 \subsection{Propiedades de los Kernels}
 
@@ -100,10 +100,12 @@ Las funciones \textit{Kernel} deben ser continuas, simétricas y preferentemente
 
 \subsection{Eligiendo el mejor Kernel}
 
-Elegir el mejor \textit{kernel} dependerá mayormente del problema que se esté tratando de solucionar, dependiendo de las características del problema esto incluso puede llegar a ser una tarea tediosa y compleja. Como se mencionó anteriormente el \textit{kernel} que se utilice, dependerá exclusivamente de que es lo que queremos modelar. Un \textit{kernel} polinomial, por ejemplo, nos permite modelar conjuntos de características hasta el orden del polinomio. Funciones de base radial permite seleccionar los círculos o hiperesferas, a diferencia del un kernel lineal, que sólo permite crear líneas y hiperplanos. 
+Elegir el mejor \textit{kernel} dependerá mayormente del problema que se esté tratando de solucionar, dependiendo de las características del problema esto incluso puede llegar a ser una tarea tediosa y compleja. Como se mencionó anteriormente el \textit{kernel} que se utilice, dependerá exclusivamente de que es lo que queremos modelar. Un \textit{kernel} polinomial, por ejemplo, nos permite modelar conjuntos de características hasta el orden del polinomio. Funciones de base radial permite seleccionar los círculos o hiperesferas, a diferencia del un kernel lineal, que sólo permite crear líneas y hiperplanos.
 
-El uso de un \textit{kernel} dependerá exclusivamente de la información que estemos extrayendo, siendo esta tarea algo que dependerá de quien este realizando el desarrollo de una aplicación o algoritmo que use algún \textit{kernel} en especifico.
+El uso de un \textit{kernel} dependerá exclusivamente de la información que estemos extrayendo, siendo esta tarea algo que dependerá de quien esté realizando el desarrollo de una aplicación o algoritmo que use algún \textit{kernel} en específico.
 
 \section{Resumen}\label{sec:resumen}
 
 Cada uno de los conceptos revisados en este capítulo son de vital importancia para los capítulos posteriores, ya que son estos conceptos los que definirán parte de lo que presentaremos en las siguientes secciones. Esto forma las bases teóricas las cuales darán forma a nuestra propuesta. En nuestro caso es importante destacar el uso de HOG ya que es este algoritmo permite representar de cierta forma las imágenes procesadas, para luego poder clasificarlas con el uso de una variación de SVM, llamada \textit{Latent SVM} (el cual será explicado y detallado en el capítulo siguiente). Términos como \textit{filtro} y \textit{score} serán utilizados con regularidad ya que son estos los que definen porciones importantes del mecanismo de reconocimiento y detección para objetos y expresiones faciales de nuestra propuesta.
+
+

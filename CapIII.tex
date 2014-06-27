@@ -1,6 +1,7 @@
 \chapter[Preliminares ]{Preliminares }\label{ch:capitulo3}
 
-En este capítulo presentaremos diversos términos fundamentales. El objetivo principal es entregar un marco teórico sobre los conceptos que se utilizarán en los siguientes capítulos para definir las técnicas utilizadas.
+En este capítulo presentaremos una explicación detallada de diversos términos los cuales serán utilizados en capítulos posteriores. El objetivo principal es entregar un marco teórico, para simplificar las explicaciones que serán presentadas posteriormente. Es de vital importancia que estos conceptos queden explicados de forma detallada y clara, puesto que cumplen un rol fundamental en la construcción del método propuesto tanto por P. Felzenszwalb, como para nuestra futura propuesta.
+
 \begin{definition}[Celdas]
 \label{def:cel}
 Una celda consiste en una región de la imagen que mide $8$ píxeles de alto por $8$ píxeles de ancho ($8 \times 8$).
@@ -23,8 +24,8 @@ HOG cuenta con ciertos pasos que se deben realizar para obtener el descriptor de
 
 \begin{figure}[tb]
   \centering
-   \includegraphics[width=1\textwidth]{Figuras/hog-procedure.png}
-   \caption{Procedimiento de cálculo de HOG.}
+   \includegraphics[width=0.8\textwidth]{Figuras/hog-procedure.png}
+   \caption[Procedimiento de cálculo de HOG]{Procedimiento de cálculo de HOG.}
    \label{fig:hog_procedure}
 \end{figure}
 
@@ -35,19 +36,19 @@ El gradiente en cada píxel está discretizado en uno de los nueve contenedores 
 \begin{figure}[tb]
   \centering
    \includegraphics[width=0.5\textwidth]{Figuras/lena-grid.png}
-   \caption{Bloque 1 (azul), bloque 2 (rojo), celdas (verde).}
+   \caption[Bloques y celdas]{Bloque 1 (azul), bloque 2 (rojo), celdas (verde).}
    \label{fig:blocks_cells}
 \end{figure}
 
 Finalmente, cada histograma de las celdas es normalizado con respecto a la energía del gradiente en un vecindario alrededor de la celda. Se observan los cuatro bloques de $2 \times 2$ de celdas que contienen una celda particular, y luego se normaliza el histograma cada celda dada con respecto a la energía total en cada uno de estos bloques. Esto entrega un vector de longitud $9 \times 4$ que representa la información local de gradiente dentro de una célula.
 
 \section{Pirámide}\label{sec:pyra}
-La pirámide consiste en hacer varias iteraciones de una misma imagen con distintas resoluciones, donde en cada nivel de resolución se extraen las características más representativas con el descriptor de HOG\@. La Figura~\ref{fig:hog_pyra}, muestra los histogramas obtenidos luego de pasar una imagen por tres niveles de la pirámide, estos niveles son representados por $\lambda$ y en la fase de entrenamiento tienen un valor de 5, es decir, cinco niveles de profundidad.
+La pirámide consiste en hacer varias iteraciones de una misma imagen con distintas resoluciones, donde en cada nivel de resolución se extraen las características más representativas con el descriptor de HOG\@. La Figura~\ref{fig:hog_pyra}, muestra los histogramas obtenidos luego de pasar una imagen por tres niveles de la pirámide, estos niveles son representados por $\lambda$ y en la fase de entrenamiento tienen un valor de 5, es decir, cinco niveles de profundidad~\cite{Felzenszwalb2010}.
 
 \begin{figure}[tb]
   \centering
    \includegraphics[width=1\textwidth]{Figuras/phog.jpg}
-   \caption{Pirámide de HOG~\cite{pyra}}
+   \caption[Pirámide de HOG]{Pirámide de HOG~\cite{pyra}}
    \label{fig:hog_pyra}
 \end{figure}
 
@@ -61,14 +62,14 @@ El \textit{score} de un filtro está definido por el producto punto entre su vec
 \textit{Support Vector Machines} (\textit{SVM})~\cite{Vapnik1995, Duda2000, Cortes1995} es un tipo de algoritmo de aprendizaje supervisado que analiza información y reconoce patrones, utilizado para tareas de clasificación. Dado un conjunto de entrenamiento previamente etiquetado, por ejemplo en dos clases, SVM construye un modelo el cual es capaz de asignar una nueva muestra a una de las categorías previamente definidas, por lo que se define un clasificador binario lineal no-probabilístico.
 SVM define un modelo como un conjunto de puntos en un espacio dado que representan un hiper-plano en dicho espacio. Este hiper-plano separa las clases con la mayor diferencia posible para clasificar sin problema dichas clases. Los nuevos datos que entren al modelo serán clasificados en una de las dos opciones de según el lado donde se encuentran respecto al hiper-plano.
 
-Además de realizar la clasificación lineal, SVM puede realizar de manera eficiente una clasificación no lineal utilizando el truco del kernel.% la cartografía de forma implícita sus entradas a los espacios de funciones de alta dimensión. what?!
+Además de realizar la clasificación lineal, SVM puede realizar de manera eficiente una clasificación no lineal utilizando el truco del \textit{kernel}, ver Sección~\ref{subsec:kernel_methods}.% la cartografía de forma implícita sus entradas a los espacios de funciones de alta dimensión. what?!
 
 \subsection{Ventajas de SVM}
 \begin{itemize}
 \item Eficiente en espacios de dimensiones altas.
 \item Sigue siendo eficaz en los casos en que el número de dimensiones es mayor que el número de muestras.
 \item Utiliza un subconjunto de puntos de entrenamiento en la función de decisión (llamada vectores de soporte), por lo que también es eficiente en el uso de memoria.
-\item Versátil: diferentes funciones del kernel pueden ser especificados para la función de decisión. Kernel comunes se proporcionan, pero también es posible especificar \textit{kernels} personalizados.
+\item Versátil: diferentes funciones del \textit{kernel} pueden ser especificados para la función de decisión. \textit{Kernel} comunes se proporcionan, pero también es posible especificar \textit{kernels} personalizados.
 \end{itemize}
 
 \subsection{Desventajas de SVM}
@@ -84,6 +85,24 @@ Además de realizar la clasificación lineal, SVM puede realizar de manera efici
 \item SVMs es útil en la ciencia médica para clasificar las proteínas con hasta un 90\% de los compuestos clasificados correctamente.
 \item Reconocimiento de caracteres escritos a mano
 \end{itemize}
+
+\subsection{Kernel Methods}\label{subsec:kernel_methods}
+
+Los métodos de \textit{Kernel} son un tipo de algoritmos utilizados en análisis y reconocimiento de patrones, los cuales son conocidos por ser utilizados en SVM~\cite{kernels}. La principal característica de estos métodos son sus diversos enfoques. Estos métodos representan la información en espacios de dimensiones mayores con el fin de poder separar las muestras, para así poder distinguirlas de manera más fácil. No existe una restricción para las dimensiones, pudiendo ser estas infinitas. Esta función de representación no necesita mayor complejidad de calculo ya que existe una herramienta llamada, \textit{The} \textit{Kernel} \textit{Trick} la que simplifica esta tarea.
+
+\subsection{The Kernel Trick}
+
+\textit{The} \textit{kernel} \textit{trick} es una herramienta matemática que puede ser utilizada sobre algoritmos que únicamente utilicen el producto punto entre dos vectores. Donde sea que se utilice el producto punto de vectores se puede reemplazar por una función \textit{kernel}. Cuando la función \textit{kernel} es bien utilizada, permite que un algoritmo lineal pase a ser no-lineal, lo que logra cambiar el espacio de representación de los datos. Dependiendo del algoritmo esto puede representar un mayor esfuerzo tanto en el computo, como en su implementación. Los algoritmos no-lineales son equivalentes a su operador lineal original en el espacio de características $\varphi$.
+
+\subsection{Propiedades de los Kernels}
+
+Las funciones \textit{Kernel} deben ser continuas, simétricas y preferentemente deben tener una una matriz de Gram definida positiva~\cite{Gram}. \textit{Kernels} que satisfacen el teorema Marcer~\cite{minh2006mercer} están definidos semi-positivos, lo que significa que sus matrices no tienen valores propios negativos. El uso de un \textit{kernel} definido positivo asegura que el problema de optimización será convexo y la solución será única.
+
+\subsection{Eligiendo el mejor Kernel}
+
+Elegir el mejor \textit{kernel} dependerá mayormente del problema que se esté tratando de solucionar, dependiendo de las características del problema esto incluso puede llegar a ser una tarea tediosa y compleja. Como se mencionó anteriormente el \textit{kernel} que se utilice, dependerá exclusivamente de que es lo que queremos modelar. Un \textit{kernel} polinomial, por ejemplo, nos permite modelar conjuntos de características hasta el orden del polinomio. Funciones de base radial permite seleccionar los círculos o hiperesferas, a diferencia del un kernel lineal, que sólo permite crear líneas y hiperplanos. 
+
+El uso de un \textit{kernel} dependerá exclusivamente de la información que estemos extrayendo, siendo esta tarea algo que dependerá de quien este realizando el desarrollo de una aplicación o algoritmo que use algún \textit{kernel} en especifico.
 
 \section{Resumen}\label{sec:resumen}
 

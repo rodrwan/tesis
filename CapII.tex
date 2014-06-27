@@ -55,7 +55,7 @@ Ahonen et al.~\cite{ahonen2006} presentan una representación eficiente del rost
 \begin{figure}[tb]
   \centering
    \includegraphics[width=1\textwidth]{Figuras/lbp.jpg}
-   \caption{Operación básica de LBP~\cite{ahonen2006}.}
+   \caption[Operación básica de LBP]{Operación básica de LBP~\cite{ahonen2006}.}
    \label{fig:lbp}
 \end{figure}
 
@@ -64,11 +64,20 @@ Ramírez et al.~\cite{ldnp2013} presenta un nuevo descriptor de características
 \begin{figure}[tb]
   \centering
    \includegraphics[width=1\textwidth]{Figuras/ldn.jpg}
-   \caption{Calculo de LDN~\cite{ldnp2013}.}
+   \caption[Calculo de LDN]{Calculo de LDN~\cite{ldnp2013}.}
    \label{fig:ldn}
 \end{figure}
 
-Zhu y Ramanan~\cite{Zhu2012} presentan un modelo unificado para detección de rostros, estimación de pose y estimación de contornos, este modelo está basado en una mezcla de árboles que comparten un conjunto de partes. Se modela cada punto destacado como una parte y se usa una mezcla global para capturar los cambios topológicos de acuerdo al punto de vista que se está analizando. En este estudio se muestra como las técnicas de árboles pueden ser muy eficientes al momento de interpretar las partes que poseen los rostros.
+Zhu y Ramanan~\cite{Zhu2012} presentan un modelo unificado para detección de rostros, estimación de pose y contornos, este modelo está basado en una mezcla de árboles que comparten un conjunto de partes $V$. Se modela cada marca del rostro como una parte y se utiliza un mezcla global para capturar los cambios topológicos de acuerdo al punto de vista. En la Figura~\ref{fig:m-view} se observan las mezclas de los puntos de vista.
+
+\begin{figure}[tb]
+  \centering
+   \includegraphics[width=1\textwidth]{Figuras/viewpoints.jpg}
+   \caption[Puntos de vista de un rostro]{El modelo de mezcla-de-árboles codifica cambios topológicos debido al punto de vista. Las líneas rojas indican las descendencias entre pares de piezas; notar no hay bucles cerrados, manteniendo la propiedad de árbol. Todos los árboles hacen uso de un fondo común y compartida de Plantillas de partes, lo que hace que el aprendizaje y la inferencia sean eficiente~\cite{Zhu2012}.}
+   \label{fig:m-view}
+\end{figure}
+
+Para que el algoritmo pueda aprender a clasificar, se utiliza un escenario completamente supervisado, donde se entregan como datos de entrada imágenes que contienen rostros (positivas) e imágenes sin presencia de rostros (negativas). Para poder clasificar se utiliza el algoritmo \textit{Chow-Liu}~\cite{Chow1968} con el objetivo de encontrar el máximo \textit{likelihood} para la estructura del árbol que mejor explique la posición de las marcas para una mezcla dada, asumiendo que todas las marcas del rostro presentan una distribución Gausiana.
 
 \subsection{Resumen}
 Este capítulo detalla varios estudios realizados previamente tanto en el área de la detección y reconocimiento de objetos, como en la detección y reconocimiento de rostros, lo cual nos permite tanto tener una idea de como trabajar sobre objetos y rostros. Nos enfocaremos en aquellos estudios los cuales utilizan partes de las imágenes para representar con más detalle los elementos que éstas puedan tener. Trabajos realizados por D. Ramanan y su grupo de trabajo serán de vital importancia para nuestro desarrollo puesto que lo realizado por él, es lo más cercano a lo que deseamos hacer para este estudio. Es así que los modelos basados en partes, más lo descriptores locales y el uso de técnicas de clasificación serán parte de las herramientas que utilizaremos en capítulos posteriores para ensamblar nuestro trabajo.

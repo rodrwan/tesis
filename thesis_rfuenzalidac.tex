@@ -13,6 +13,27 @@
 
 \usepackage{amsmath}
 \usepackage{amsthm}
+
+% to use in codes examples.
+\usepackage{listings}
+\renewcommand\lstlistingname{Código}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
+\widowpenalty=5000  \clubpenalty=10000
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}[chapter]
 
@@ -35,23 +56,24 @@
 
 \professor{Adín Ramírez}
 \committee{Javier Pereira}{}
-\dedicatory{Este trabajo va dedicado a mi madre, por todos esos años de sacrificio para darme una excelente educación.}
-\acknowledgment{(Nota redactada sobriamente en la cual se agradece a quienes han colaborado en la elaboración del trabajo.)}
+\dedicatory{Este trabajo va dedicado a mi madre, por todos esos años de trabajo y sacrificio que ha dado para darme una excelente educación. Este trabajo es poco en comparación a lo que te mereces, te quiero mucho madre mía.}
+\acknowledgment{Gracias a todas esas personas que me apoyaron emocionalmente, gracias aquellos que pudieron hacer de este trabajo algo real, gracias a Finciero por tener paciencia mientras este trabajo avanza. Gracias a la mujer más importante de mi vida, mi madre, por estar apoyándome en los malos y buenos momentos.}
 \makecover
 
 
 % Indices de materia, figuras y tablas
 \tableofcontents                        % tabla de contenido
 \listoffigures                          % índice de figuras
-\listoftables                           % índice de tablas
+%\listoftables                           % índice de tablas
 
 % Resumenes
 \begin{abstract}
-(Abstract es el resumen en inglés que no debe exceder una página.)
+In this work we present a system based on mixture models using a deformable parts models for detection and recognition of objects extracted from the state of the art which allow us to present and test a new descriptor to represent objects and facial expressions. This system~\cite{Felzenszwalb2008,Felzenszwalb2010,Felzenszwalb2013} developed by Felzenszwalb and the research group of D. Ramanan will be analyzed in depth, in order to make improvements and as mentioned above to use our descriptor to be able to recognize objects and facial expressions in image sequences. The dataset of images from PASCAL database images are used in addition to a dataset of images of facial expressions, with the aim of making a system that is layered to create prediction models for different classes of objects and facial expressions. Our descriptor will be tested under the parameters that this development framework presented, which will save us some work and create mixture models that allow us to obtain predictions of an object or facial expression from different viewpoints. At the end of this paper will discuss the results obtained thus being able to determine if our descriptor improves the results obtained by other algorithms presented in the state of art.
 \end{abstract}
 
 \begin{resumen}
-(El resumen no debe contener menos de 100 palabras ni mas de 300 palabras.)
+
+En este trabajo se presenta un sistema basado en modelos mixtos que utiliza modelos de partes deformadas para detección y reconocimiento de objetos extraído del estado del arte el que nos permitirá presentar y probar un nuevo descriptor para representar objetos y expresiones faciales. Este sistema~\cite{Felzenszwalb2008,Felzenszwalb2010,Felzenszwalb2013} desarrollado por Felzenszwalb y el grupo de investigación de D. Ramanan será analizado en profundidad, para así poder hacerle mejoras y como se mencionó anteriormente para poder probar nuestro descriptor con el fin de poder reconocer objetos y expresiones faciales en secuencias de imágenes. Para esto se utilizará el conjunto de imágenes de la base de imágenes PASCAL~\cite{Everingham2010} además de un conjunto de imágenes de expresiones faciales, con el objetivo de poder hacer un sistema que sea capas de generar modelos de predicción para las distintas clases de objetos y expresiones faciales. Nuestro descriptor se pondrá a prueba bajo los parámetros que este marco de desarrollo presenta, lo que nos permitirá ahorrar algo de trabajo y crear modelos mixtos que nos permitirá poder obtener predicciones de un objeto o expresión facial desde distintos puntos de vista. Al final de este trabajo discutiremos los resultados obtenidos pudiendo así poder determinar si nuestro descriptor mejora los resultados obtenidos por otros algoritmos presentados en el estado del arte.
 \end{resumen}
 
 
@@ -61,8 +83,9 @@
 \input{CapII}
 \input{CapIII}
 \input{CapIV}
-\input{CapV}
-\input{CapVI}
+%\input{CapV}
+%\input{CapVI}
+%\input{CapVII}
 
 % Bibliografía
 % ---------------------------------------------------------------
@@ -73,6 +96,7 @@
 
 % Anexos
 \appendix
+\input{Anexo}
 % aca se incluyen los archivos con el texto de los anexos
 % (Ej.: anx-uno.tex es el archivo de un anexo)
 %\input{Anexo}

@@ -1,4 +1,4 @@
-\chapter[Preliminares ]{Preliminares }\label{ch:capitulo3}
+\chapter[Métodos ]{Métodos }\label{ch:capitulo3}
 
 En este capítulo presentaremos una explicación detallada de diversos términos los cuales serán utilizados en capítulos posteriores. El objetivo principal es entregar un marco teórico, para simplificar las explicaciones que serán presentadas posteriormente. Es de vital importancia que estos conceptos queden explicados de forma detallada y clara, puesto que cumplen un rol fundamental en la construcción del método propuesto tanto por P. Felzenszwalb, como para nuestra futura propuesta.
 
@@ -54,8 +54,10 @@ La pirámide consiste en hacer varias iteraciones de una misma imagen con distin
 
 \section{Filtro y \textit{score}}\label{sec:fas}
 
-Un filtro está definido por una matriz de $w$ (ancho) por $h$ (alto) la cual define un vector de peso de $d$-dimensiones. Estos filtros especifican las características extraídas por HOG, en los niveles de la pirámide.
+\subsection{Filtro}
+Un filtro está definido por una matriz de $w$ (ancho) por $h$ (alto) la cual define un vector de peso de $d$-dimensiones. Estos filtros especifican las características extraídas por HOG, en los niveles de la pirámide. El tamaño del filtro se crea en base a la razón entre el ancho $w$ y el alto $h$ de las imágenes, correspondientes al conjunto de datos que se está observando, es decir, en base a la proporción de los aspectos que tiene el conjunto de imágenes, donde los aspecto serán distribuidos por una distribución exponencial, en un rango definido entre -2 y 2 con una separación de 0.02. El área el filtro es calculado mediante el calculo de las áreas de las imágenes pertenecientes al conjunto de datos, de las cuales se extrae el 20\% de las imágenes ordenadas de forma descendente. Por último el tamaño del filtro es calculado como: $w = (area/aspecto)^2$ y $h = w*aspecto$.
 
+\subsection{Score}
 El \textit{score} de un filtro está definido por el producto punto entre su vector de pesos y las característica en la sub-ventana de la pirámide de HOG de dimensión $w \times h$.
 \section{SVM}\label{sec:lsvm}
 

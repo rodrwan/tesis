@@ -21,6 +21,8 @@
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
 
 \lstdefinelanguage{XML}
 {
@@ -73,7 +75,7 @@ In this work we present a system based on mixture models using a deformable part
 
 \begin{resumen}
 
-En este trabajo se presenta un sistema basado en modelos mixtos que utiliza modelos de partes deformadas para detección y reconocimiento de objetos extraído del estado del arte el que nos permitirá presentar y probar un nuevo descriptor para representar objetos y expresiones faciales. Este sistema~\cite{Felzenszwalb2008,Felzenszwalb2010,Felzenszwalb2013} desarrollado por Felzenszwalb y el grupo de investigación de D. Ramanan será analizado en profundidad, para así poder hacerle mejoras y como se mencionó anteriormente para poder probar nuestro descriptor con el fin de poder reconocer objetos y expresiones faciales en secuencias de imágenes. Para esto se utilizará el conjunto de imágenes de la base de imágenes PASCAL~\cite{Everingham2010} además de un conjunto de imágenes de expresiones faciales, con el objetivo de poder hacer un sistema que sea capas de generar modelos de predicción para las distintas clases de objetos y expresiones faciales. Nuestro descriptor se pondrá a prueba bajo los parámetros que este marco de desarrollo presenta, lo que nos permitirá ahorrar algo de trabajo y crear modelos mixtos que nos permitirá poder obtener predicciones de un objeto o expresión facial desde distintos puntos de vista. Al final de este trabajo discutiremos los resultados obtenidos pudiendo así poder determinar si nuestro descriptor mejora los resultados obtenidos por otros algoritmos presentados en el estado del arte.
+En este trabajo se presenta un sistema basado en modelos mixtos que utiliza modelos de partes deformadas para detección y reconocimiento de objetos extraído del estado del arte, el que nos permitirá presentar y probar un nuevo descriptor para representar objetos y expresiones faciales. Este sistema~\cite{Felzenszwalb2008,Felzenszwalb2010,Felzenszwalb2013} desarrollado por Felzenszwalb et al. y el grupo de investigación de D. Ramanan, será analizado en profundidad, para así hacer mejoras sobre éste y como se mencionó anteriormente para probar nuestro descriptor con el fin de reconocer objetos y expresiones faciales en secuencias de imágenes. Para esto se utilizará el conjunto de imágenes de la base de imágenes PASCAL~\cite{Everingham2010} además de un conjunto de imágenes de expresiones faciales, con el objetivo de hacer un sistema que sea capas de generar modelos de predicción para las distintas clases de objetos y expresiones faciales. Nuestro descriptor se pondrá a prueba bajo los parámetros que este framework presenta, lo que nos permitirá ahorrar algo de trabajo y crear modelos que nos permitirá obtener predicciones de un objeto en particular, o expresión facial desde distintos puntos de vista. Al final de este trabajo discutiremos los resultados obtenidos pudiendo así determinar, si nuestro descriptor mejora los resultados obtenidos por otros algoritmos presentados en el estado del arte.
 \end{resumen}
 
 
@@ -85,7 +87,7 @@ En este trabajo se presenta un sistema basado en modelos mixtos que utiliza mode
 \input{CapIV}
 \input{CapV}
 \input{CapVI}
-\input{CapVII}
+%\input{CapVII}
 
 % Bibliografía
 % ---------------------------------------------------------------

@@ -1,6 +1,6 @@
 \chapter[Métodos ]{Métodos }\label{ch:capitulo3}
 
-En este capítulo presentaremos una explicación detallada de diversos términos los cuales serán utilizados en capítulos posteriores. El objetivo principal es entregar un marco teórico, para simplificar las explicaciones que serán presentadas posteriormente. Es de vital importancia que estos conceptos queden explicados de forma detallada y clara, puesto que cumplen un rol fundamental en la construcción del método propuesto tanto por P. Felzenszwalb, como para nuestra futura propuesta.
+En este capítulo presentaremos una explicación detallada de diversos términos y métodos los cuales serán utilizados en capítulos posteriores. El objetivo principal es entregar un marco teórico, para simplificar las explicaciones que serán presentadas posteriormente. Es de vital importancia que estos conceptos queden explicados de forma detallada y clara, puesto que cumplen un rol fundamental en la construcción del método propuesto tanto por P. Felzenszwalb, como para nuestra futura propuesta.
 
 \begin{definition}[Celdas]
 \label{def:cel}
@@ -58,13 +58,13 @@ La pirámide consiste en hacer varias iteraciones de una misma imagen con distin
 Un filtro está definido por una matriz de $w$ (ancho) por $h$ (alto) la cual define un vector de peso de $d$-dimensiones. Estos filtros especifican las características extraídas por HOG, en los niveles de la pirámide. El tamaño del filtro se crea en base a la razón entre el ancho $w$ y el alto $h$ de las imágenes, correspondientes al conjunto de datos que se está observando, es decir, en base a la proporción de los aspectos que tiene el conjunto de imágenes, donde los aspecto serán distribuidos por una distribución exponencial, en un rango definido entre -2 y 2 con una separación de 0.02. El área el filtro es calculado mediante el calculo de las áreas de las imágenes pertenecientes al conjunto de datos, de las cuales se extrae el 20\% de las imágenes ordenadas de forma descendente. Por último el tamaño del filtro es calculado como: $w = (area/aspecto)^2$ y $h = w*aspecto$.
 
 \subsection{Score}
-El \textit{score} de un filtro está definido por el producto punto entre su vector de pesos y las característica en la sub-ventana de la pirámide de HOG de dimensión $w \times h$.
+El \textit{score} de un filtro está definido por el producto punto entre su vector de pesos y las característica en la sub-ventana de la pirámide de HOG de dimensión $w \times h$. Esto es calculado mediante la convolución del filtro que se está analizando con la imagen correspondiente.
 \section{SVM}\label{sec:lsvm}
 
 \textit{Support Vector Machines} (\textit{SVM})~\cite{Vapnik1995, Duda2000, Cortes1995} es un tipo de algoritmo de aprendizaje supervisado que analiza información y reconoce patrones, utilizado para tareas de clasificación. Dado un conjunto de entrenamiento previamente etiquetado, por ejemplo en dos clases, SVM construye un modelo el cual es capaz de asignar una nueva muestra a una de las categorías previamente definidas, por lo que se define un clasificador binario lineal no-probabilístico.
 SVM define un modelo como un conjunto de puntos en un espacio dado que representan un hiperplano en dicho espacio. Este hiperplano separa las clases con la mayor diferencia posible para clasificar sin problema dichas clases. Los nuevos datos que entren al modelo serán clasificados en una de las dos opciones de según el lado donde se encuentran respecto al hiperplano.
 
-Además de realizar la clasificación lineal, SVM puede realizar de manera eficiente una clasificación no lineal utilizando el truco del \textit{kernel}, ver Sección~\ref{subsec:kernel_methods}.% la cartografía de forma implícita sus entradas a los espacios de funciones de alta dimensión. what?!
+Además de realizar la clasificación lineal, SVM puede realizar de manera eficiente una clasificación no lineal utilizando el truco del \textit{kernel}, ver Sección~\ref{subsec:kernel_methods}.
 
 \subsection{Ventajas de SVM}
 \begin{itemize}

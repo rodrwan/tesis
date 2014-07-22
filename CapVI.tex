@@ -1,16 +1,16 @@
 \chapter[Conclusiones]{Conclusiones}\label{ch:capitulo6}
-Presentamos un framework creado por Felzenszwalb et al. y el grupo de desarrollo de D. Ramanan, además presentamos un resumen del estado del arte que se utilizó para crear este framework. Se presentó un análisis extenso sobre este programa con el fin de obtener ventajas considerables para nuestro proyecto. En conclusión este framework nos permitirá probar nuestro algoritmo ya que funciona independiente del tipo de descriptor que se utilice. Al ser un framework flexible podemos hacer múltiples cambios en su estructura. En trabajos futuros se buscará mejorar este framework y probar más categorías de imágenes, incluyendo entre ellas, expresiones faciales y elementos claves de un museo.
+Presentamos un framework creado por Felzenszwalb et al. y el grupo de desarrollo de D. Ramanan, con el objetivo de analizar su estructura y contenido, para utilizarlo como herramienta de desarrollo para modelar objetos. Además presentamos un resumen del estado del arte que se utilizó para crear este framework. El análisis de este framework nos entregó ventajas considerables para nuestro proyecto, ahorrándonos tiempo de programación, ya que este abarca gran parte del trabajo pesado al que nos vemos enfrentados en este tipo de investigaciones. En conclusión este framework nos permitirá probar nuestro algoritmo ya que funciona independiente del tipo de descriptor que se utiliza internamente. Además nos permite hacer varios otros experimentos con los modelos generados por este framework, ver Sección~\ref{sec:future}. Al ser un framework flexible podemos hacer múltiples cambios en su estructura. En trabajos futuros la utilización de este framework nos permitirá trabajar de manera más fácil sobre las propuesta futuras, buscará mejorar este framework y probar más categorías de imágenes, incluyendo entre ellas, expresiones faciales. 
 
-\section{Trabajos futuros}
-A continuación se presentan los trabajos futuros que serán parte de la segunda parte de este trabajo, donde se analizaran en profundidad cada uno de los puntos presentados a continuación:
+\section{Trabajos futuros}\label{sec:future}
+A continuación se presentan los trabajos futuros que abordaremos en la segunda parte de este trabajo, donde se analizaran en profundidad cada uno de los puntos presentados a continuación:
 \begin{itemize}
-
-\item Creación de modelos para las 6 expresiones faciales canónicas. El objetivo es poder utilizar el marco de desarrollo que genera los modelos por partes para crear un modelo de predicción capaz de reconocer estas seis expresiones.
+\item Creación de modelos para las seis expresiones faciales canónicas. El objetivo es utilizar el framework presentado para genera modelos por partes, para modelar y así reconocer las seis expresiones canónicas.
 
 \item Agregar más clases al conjunto de datos, por ejemplo, cuadros, estatuas y elementos cotidianos, como celulares, tablets, entre otras clases de objetos.
 
-\item Desarrollar y probar nuestra propuesta para representar las características de las categorías (objetos, expresiones faciales), con el objetivo de reemplazar el actual descriptor que utiliza el marco de desarrollo para generar una comparación con respecto al estado actual de este marco.
+\item Desarrollar y probar nuestra propuesta para representar las características de las categorías (objetos, expresiones faciales), con el objetivo de reemplazar el actual descriptor que utiliza el marco de desarrollo para generar una comparación con respecto al estado actual de este framework.
 
 \item Generar nuevos modelos para las seis expresiones faciales utilizando el nuevo descriptor en el marco de desarrollo, además generar modelos nuevos para algunas categorías de objetos con el fin de generar una comparativa entre los modelos normales y los modelos nuevos.
 
+\item Sistema de detección en base a modelos generados por framework, explorando así otras técnicas de clasificación y detección de objetos.
 \end{itemize}

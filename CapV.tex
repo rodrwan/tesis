@@ -1,50 +1,51 @@
 \chapter[Experimentos y resultados]{Experimentos y resultados}\label{ch:capitulo5}
-En este capítulo presentaremos los experimentos y los resultados obtenidos para la primera parte de este trabajo, que considera el estado del arte y la presentación del marco de desarrollo descrito en el Capítulo~\ref{ch:capitulo4}, el objetivo de este capítulo es discutir los resultados entregados por este marco de desarrollo con el objetivo de determinar sus ventajas y desventajas, para así tener una visión específica para los trabajos futuros. Además se presentan los trabajos futuros que discutiremos en la segunda parte de este trabajo.
+En este capítulo presentaremos los experimentos y resultados obtenidos para la primera parte de este trabajo, el objetivo de este capítulo es discutir los resultados entregados por el framework presentado en el Capítulo~\ref{ch:capitulo4} con el fin de mostrar su rendimiento para las distintas clases utilizadas. Con esto obtendremos una visión detallada del funcionamiento de los modelos.
 
-\section{Experimentos}
-Para esta primera etapa se utilizó el marco de desarrollo presentado en el Capítulo~\ref{ch:capitulo4}, con este marco de desarrollo creamos modelos para distintas categorías de objetos, ver Sección~\ref{subsec:m_obj}, objetos nuevos (Sección~\ref{subsec:m_new_im}), expresiones faciales (Sección~\ref{subsec:m_face}).
+\section{Base experimental}
+Para esta primera etapa se utilizó el framework presentado en el Capítulo~\ref{ch:capitulo4}, con éste se crearon modelos para distintas clases de objetos, botellas, personas, autos, sillas, etc. El sistema mostrado en el Capítulo~\ref{ch:capitulo4} a sido evaluado con las imágenes de prueba pertenecientes al conjunto de datos PASCAL VOC, conjunto de datos muy utilizado por otras investigaciones y que proporciona un sistema de anotaciones ideal para este tipo de trabajos. 
 
-\subsection{Modelos para objetos}\label{subsec:m_obj}
-Para la realización de este experimento creamos un modelo de predicción para botellas, latas, autos, aviones, bicicletas, etc. Utilizamos las imágenes pertenecientes a la base de imágenes de PASCAL, mencionada en el Capítulo~\ref{ch:capitulo4}, la que provee una cantidad de datos de entrenamiento considerablemente grande, aparte de entregarnos un sistema de anotaciones las cuales enmarcan a los objetos de interés para el proceso de entrenamiento y clasificación.
+Cada conjunto de datos contiene miles de imágenes que representan objetos del mundo real, y  donde se especifican la posición del objeto por medio de cuadros delimitadores, además de registrarse información de la clases a la cual pertenece, entre otros datos. En la fase de pruebas, el objetivo es predecir la ubicación del cuadro delimitador de todos los objetos según la clases que se esté observando. En la practica, el sistema entrega como respuesta un conjunto de cajas delimitadoras con una puntuación de confianza, estas puntuaciones son delimitadas por un umbral en distintos puntos, lo que permite obtener una curva de precisión-exhaustividad, más conocido como \textit{precision}-\textit{recall}, a través de todas las imágenes de prueba. Para un umbral en particular, la precisión es la fracción de los cuadros delimitadores que entregan una correcta detección, mientras que la exhustividad (\textit{recall}), es la fracción de objetos encontrados.
 
-\subsection{Modelos para imágenes nuevas}\label{subsec:m_new_im}
-El problema de la base de datos de imágenes de PASCAL es que no provee todo el universo de objetos que uno quisiera, esto nos da la oportunidad para que nosotros podamos agregar nuestros propios objetos y siguiendo el mismo procedimiento, poder crear las estructuras necesarias para que el marco de desarrollo cree los modelos correspondientes, por ejemplo, podemos agregar imágenes de latas, imágenes de cuadros, imágenes de estatuas.
-
-\subsection{Modelos para expresiones faciales}\label{subsec:m_face}
-Para las expresiones faciales, separamos estas expresiones en seis clases, correspondientes cada una de ellas a las expresiones canónicas, es decir, obtuvimos un conjunto de imágenes de entrenamiento para expresiones de alegría, asco, ira, miedo, sorpresa, tristeza. El objetivo es generar un modelo de predicción para cada una de estas expresiones.
+Un cuadro delimitador es considerado correcto si este tiene al menos un 50\% de su tamaño contenido dentro del cuadro delimitador real. En caso de que varios cuadros delimitadores coincidan con el cuadro delimitador real, solo se deja uno como correcto. Por cada uno de estos cuadros se calcula un \textit{score} el que discrimina cual cuadro es mejor de acuerdo a su posición.
 
 \section{Resultados}
-En esta sección presentaremos resultados obtenidos para la detección de botellas. Para este caso creamos un modelo de reconocimiento de botellas con el marco de desarrollo del Capítulo~\ref{ch:capitulo4}, luego con la imagen de prueba, Figura~\ref{fig:bottle}, comprobamos la efectividad del modelo. Los resultados obtenido para la Figura~\ref{fig:bottle}, se presentan en las Figuras~\ref{fig:bottle-parts},~\ref{fig:bottle-parts-final},~\ref{fig:bottle-final}.
+En esta sección presentamos los resultados obtenidos para la detección de objetos. Con la ayuda del framework se creó un modelo de reconocimiento para botellas, autos, personas y bicicletas, luego se seleccionó un conjunto de imágenes para utilizar como datos de prueba, La Figura~\ref{fig:clases} muestra un extracto de algunas imágenes utilizadas para las distintas clases, con esto comprobamos la efectividad del modelo. Los resultados por cada clase se presentan la sección~\ref{sec:results}.
 \begin{figure}[tb]
 \centering
- \includegraphics[width=0.6\textwidth]{Figuras/results/bottle.jpg}
- \caption[Imagen de botellas]{Imagen de prueba para categoría \textit{botella}, se espera poder detectar las cuatro botellas que hay presentes en la imagen.}
- \label{fig:bottle}
+ \includegraphics[width=1\textwidth]{Figuras/results/clases.jpg}
+ \caption[Imágenes de prueba]{Imágenes de prueba para cada categoría,}
+ \label{fig:clases}
+\end{figure}
+\section{Resultados experimentales}\label{sec:results}
+En esta sección presentamos los resultados obtenidos por los modelos creado mediante la utilización del framework presentado en el Capítulo~\ref{ch:capitulo4}.
+
+\begin{figure}[tb]
+\centering
+ \includegraphics[width=1\textwidth]{Figuras/results/bottle_r/resultados.jpg}
+ \caption[Detección de partes para un objeto (botellas)]{Resultados detección de botellas, en esta figura se muestran las partes obtenidas por el modelo creado por el framework (a), además se observan algunas imágenes con sus respectivas detecciones (b), (c) y (d). En este caso se trata de un modelo de detección de botellas.}
+ \label{fig:botellas}
 \end{figure}
 
 \begin{figure}[tb]
 \centering
- \includegraphics[width=0.8\textwidth]{Figuras/results/bottle-parts.jpg}
- \caption[Detección de partes para un objeto]{Detección de partes para Figura~\ref{fig:bottle}, en esta figura se muestran las partes obtenidas por el descriptor del marco de desarrollo, cabe destacar que el modelo fue entrenado con una pirámide con profundidad igual a cuatro.}
- \label{fig:bottle-parts}
+ \includegraphics[width=1\textwidth]{Figuras/results/person_r/resultados.jpg}
+ \caption[Detección de partes para un objeto (personas)]{Resultado de detección de personas, (a) muestra el modelo generado por el framework, en (b), (c) y (d) se muestran los resultados obtenidos en la detección por partes.}
+ \label{fig:personas}
 \end{figure}
 
 \begin{figure}[tb]
 \centering
- \includegraphics[width=0.8\textwidth]{Figuras/results/bottle-parts-final.jpg}
- \caption[Detección de partes en imagen de un objeto]{Detección de partes en Figura~\ref{fig:bottle}, de las partes extraídas por la pirámide se busca su mejor posición dentro de la imagen de prueba, además se presenta el filtro raíz. El objetivo de las partes es corroborar la posición del filtro raíz.}
- \label{fig:bottle-parts-final}
+ \includegraphics[width=1\textwidth]{Figuras/results/bicycle_r/resultados.jpg}
+ \caption[Detección de partes para un objeto (bicicleta)]{Resultado detección de bicicletas, (a) muestra el modelo generado por el framework, en (b), (c) y (d) se muestran los resultados obtenidos en la detección por partes.}
+ \label{fig:bicicleta}
 \end{figure}
 
-\begin{figure}[tb]
-\centering
- \includegraphics[width=0.8\textwidth]{Figuras/results/bottle-final.jpg}
- \caption[Detección final para un objeto]{Detección final para Figura~\ref{fig:bottle}, se eliminan las partes, y solo queda el filtro raíz ya que este último representa la mejor ventana de detección del objeto. Como se aprecia, las cuatro botellas de la imagen han sido detectadas.}
- \label{fig:bottle-final}
-\end{figure}
+Si bien en las tres clases mostradas como ejemplo se obtuvo un modelo de predicción, algunos modelos son mejores que otros, y en este caso si nos detenemos en la Figura~\ref{fig:botellas}, podemos darnos cuenta que no tiene ruido al detectar un objeto, entiendase por ruido a la presencia de otras regiones delimitadoras, a diferencia de las Figuras~\ref{fig:bicicleta} y~\ref{fig:personas} que presentan mucho ruido. Esto es debido a que estás dos últimas clases (bicicletas y personas) han sido deliberadamente entrenadas con una menor cantidad de ejemplo, influyendo notoriamente sobre los resultados obtenidos. A su vez la cantidad de iteraciones sobre un mismo ejemplo se redujo con el objetivo de disminuir el tiempo de computo, obteniendo como resultado un peor predicción. Para el caso del modelo de botellas este tuvo una duración de 8 horas, donde no se limito el número de datos de entrenamiento, siendo este de 5813 imágenes. Además sobre cada ejemplo se iteró, para ejemplos positivos 10 veces y para ejemplos negativos 8 veces, logrando así una mejora sustancia sobre el modelo de predicción.
 
-Como se puede ver la detección es posible realizarla mediante la utilización de los modelos creados por el marco de desarrollo, en futuras entregas se probará su efectividad con otro tipo de descriptor, con el objetivo de generar una comparativa, para luego analizar la posibilidad de portar estos modelos a un sistema con menor potencia.
+\subsection{Modelos para expresiones faciales}\label{subsec:m_face}
+Para las expresiones faciales, se separaron estas expresiones en seis clases, correspondientes cada una de ellas a las expresiones canónicas, es decir, obtuvimos un conjunto de imágenes de entrenamiento para expresiones de alegría, asco, ira, miedo, sorpresa, tristeza. El objetivo es generar un modelo de predicción para cada una de estas expresiones. Si bien no se generó un modelo final para estás expresiones, ya que se dio mayor énfasis en el análisis del framework y los modelos para objetos. 
+
 \section{Resumen}
-En este capítulo se presentaron los experimentos realizados en esta etapa y algunos resultados obtenidos correspondientes al funcionamiento del marco de desarrollo descrito en el Capítulo~\ref{ch:capitulo4}. Podemos apreciar en la Figura~\ref{fig:bottle-final} que la detección de un objetos del tipo botella, ha sido posible mediante la creación de un modelo creado mediante la utilización de muchos datos de entrada que tenían precian de una botella, como se mencionó anteriormente estos datos son proporcionados por la base de imágenes de PASCAL. En el siguiente capítulo se presentan nuestras conclusiones sobre esta primera etapa del trabajo, además se presentan los trabajos pendiente y futuros que se realizarán en futuras entregas.
+En este capítulo se presentaron los experimentos realizados en esta etapa y algunos resultados obtenidos correspondientes al funcionamiento del marco de desarrollo descrito en el Capítulo~\ref{ch:capitulo4}. Podemos apreciar en la Figura~\ref{fig:botellas} que la detección de un objetos del tipo botella, ha sido posible mediante la creación de un modelo creado mediante la utilización de muchos datos de entrada que tenían precian de una botella, como se mencionó anteriormente estos datos son proporcionados por la base de imágenes de PASCAL. En el siguiente capítulo se presentan nuestras conclusiones sobre esta primera etapa del trabajo, además se presentan los trabajos pendiente y futuros que se realizarán en futuras entregas.
 
 
